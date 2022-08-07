@@ -1,6 +1,6 @@
 const { DataTypes, sequelize } = require('sequelize')
 
-const userSchema = sequelize.define({
+const productSchema = sequelize.define({
     id: {
         type: DataTypes.INTEGER,
         required: true,
@@ -57,4 +57,4 @@ const userSchema = sequelize.define({
     }
 });
 
-module.exports = { userSchema };
+module.exports = { productSchema };

@@ -25,6 +25,6 @@ const connectionPostgress = async () => {
   return result;
 };
 
-connectionPostgress().then((result) => {
+module.exports = connectionPostgress().then((result) => {
   console.log(result);
 })

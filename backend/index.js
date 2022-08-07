@@ -1,12 +1,19 @@
 const express = require('express');
 const app = express();
+const routerApi = require('./controllers/index');
+
+const { config } = require('../config')
+
+// db
+const connectionPostgress = require('./db/db')
+connectionPostgress(config.db_url);
 
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routes
-app.use(require('./routes/index'));
+routerApi();
 
 app.get('/', (req, res) => {
     res.send('Welcome')

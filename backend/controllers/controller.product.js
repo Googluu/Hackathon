@@ -1,11 +1,17 @@
-const { Pool } = require("pg");
+const express = require('express');
 
+const ProductsService = require('../services/service.product');
 
-const getProducts = async (req, res) => {
-    const response = await Pool.query('SELECT * FROM public.app_product_class')
-    res.status(200).json(response.rows);
-}
+const router = express.Router();
+const service = new ProductsService();
 
-module.exports = {
-    getProducts,
-}
+router.get('/', async (req, res, next) => {
+    try {
+        const products = await service.find(req.query);
+        res.json(products);
+    } catch (error) {
+        next(error);
+    }
+})
+
+module.exports = router;

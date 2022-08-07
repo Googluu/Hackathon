@@ -4,6 +4,7 @@
   "description": "Hackathon",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon backend/db/db.js",
     "dev": "nodemon backend/index.js"
   },
   "repository": {
@@ -17,8 +18,10 @@
   },
   "homepage": "https://github.com/Googluu/Hackathon#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
     "sequelize": "^6.21.3"
   },
   "devDependencies": {

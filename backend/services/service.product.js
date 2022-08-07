@@ -1,11 +1,7 @@
-class ProductsService {
-    constructor() {
-        this.products = [];
-    }
+const productModel = require('../models/model.product')
 
-    async find(query) {
-        return await this.products.find(query);
-    }
+const ProductsService = async () => {
+    const products = await productModel.
 }
 
 module.exports = ProductsService;

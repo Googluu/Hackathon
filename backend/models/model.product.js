@@ -1,6 +1,9 @@
-const { DataTypes, sequelize } = require('sequelize')
+// const { DataTypes, sequelize } = require('sequelize')
+// const { DataTypes } = require('sequelize');
+// const Sequelize = require('sequelize');
 
-const productSchema = sequelize.define({
+module.exports = (DataTypes , sequelize) => {
+const productSchema = sequelize.define('app_product_class', {
     id: {
         type: DataTypes.INTEGER,
         required: true,
@@ -56,5 +59,5 @@ const productSchema = sequelize.define({
         type: DataTypes.UUID,
     }
 });
-
-module.exports = { productSchema };
+return productSchema;
+}

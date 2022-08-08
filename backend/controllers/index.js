@@ -1,5 +1,4 @@
 const express = require('express');
-
 const productsRouter = require('./controller.product');
 
 function routerApi(app) {

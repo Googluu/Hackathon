@@ -1,63 +1,61 @@
-// const { DataTypes, sequelize } = require('sequelize')
-// const { DataTypes } = require('sequelize');
-// const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
+const { sequelize } = require('../db/db.js');
 
-module.exports = (DataTypes , sequelize) => {
-const productSchema = sequelize.define('app_product_class', {
+const productModel = sequelize.define("app_product_class",{
     id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         required: true,
         primaryKey: true,
         autoIncrement: true,
     },
     type: {
-        type: DataTypes.STRING,
+        type: Sequelize.TEXT,
         required: true,
     },
     title: {
-        type: DataTypes.STRING,
+        type: Sequelize.TEXT,
         required: true,
     },
     description: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         required: true,
     },
     price: {
-        type: DataTypes.DECIMAL,
+        type: Sequelize.NUMBER,
         required: true,
     },
     measure_units: {
-        type: DataTypes.STRING,
+        type: Sequelize.TEXT,
         default: null
     },
     measure_type: {
-        type: DataTypes.STRING,
+        type: Sequelize.TEXT,
         default: null
     },
     units_quantity: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         required: true,
     },
     handling_recommendations: {
-        type: DataTypes.TEXT,
+        type: Sequelize.TEXT,
         required: true,
     },
     image: {
-        type: DataTypes.STRING,
+        type: Sequelize.TEXT,
         required: true,
     },
     price_history: {
-        type: DataTypes.JSONB,
+        type: Sequelize.TEXT,
     },
     custom_id: {
-        type: DataTypes.STRING,
+        type: Sequelize.TEXT,
     },
-    app_product_classpkey: {
-        type: DataTypes.INTEGER,
-    },
-    app_product_customaclass_id_key: {
-        type: DataTypes.UUID,
-    }
-});
-return productSchema;
-}
+},
+{
+    freezeTableName: false,
+    timestamps: false,
+    paranoid: true,
+    tableName: 'app_product_class'
+})
+
+module.exports=productModel;

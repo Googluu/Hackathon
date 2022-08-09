@@ -1,30 +1,51 @@
-const { Client } = require('pg');
-
 const { config } = require('../../config');
+const Sequelize = require('sequelize');
 
-const connectionPostgress = async () => {
-  const client = new Client({
-    user: config.user,
-    host: config.host,
-    database: config.db_url,
-    password: config.password,
-    port: config.port,
-    ssl: {
-      rejectUnauthorized: false 
-    }
+
+const sequelize = new Sequelize(config.url,
+  {
+      dialect: 'postgres',
+      native: true, 
+      logging: false,
+      protocol: 'postgres',
+      ssl: {
+        rejectUnauthorized: false 
+      },
+      dialectOptions: {
+        ssl: false,
+        native:true
+      },
   });
 
-  await client.connect();
+module.exports= { sequelize }
 
-  const res = await client.query("SELECT * FROM public.app_product_class");
+// const { Client } = require('pg');
 
-  const result = res.rows;
+// const { config } = require('../../config');
 
-  await client.end();
+// const connectionPostgress = async () => {
+//   const client = new Client({
+//     user: config.user,
+//     host: config.host,
+//     database: config.db_url,
+//     password: config.password,
+//     port: config.port,
+//     ssl: {
+//       rejectUnauthorized: false 
+//     }
+//   });
 
-  return result;
-};
+//   await client.connect();
 
-module.exports = {
-  connectionPostgress
-};
+//   const res = await client.query("SELECT * FROM public.app_product_class");
+
+//   const result = res.rows;
+
+//   await client.end();
+
+//   return result;
+// };
+
+// module.exports = {
+//   connectionPostgress
+// };

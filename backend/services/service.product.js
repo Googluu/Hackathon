@@ -1,7 +1,9 @@
-const productModel = require('../models/model.product')
+const productModel = require('../models/model.product.js')
+const sequelize = require('sequelize');
 
-const ProductsService = async () => {
-    const products = await productModel.
+async function allProducts(){
+    const products = await productModel.findAll();
+    return products;
 }
 
-module.exports = ProductsService;
+module.exports = {allProducts};

@@ -3,7 +3,7 @@ const productsRouter = require('./controller.product');
 
 function routerApi(app) {
     const router = express.Router();
-    app.use('/api/v1', router);
+    app.use(router)
     router.use('/products', productsRouter)
 }
 

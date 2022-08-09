@@ -36,12 +36,20 @@ const productModel = sequelize.define("app_product_class",{
         type: Sequelize.INTEGER,
         required: true,
     },
+    packaging_recommendations: {
+        type: Sequelize.TEXT,
+        required: true,
+    },
     handling_recommendations: {
         type: Sequelize.TEXT,
         required: true,
     },
     image: {
         type: Sequelize.TEXT,
+        required: true,
+    },
+    deleted: {
+        type: Sequelize.BOOLEAN,
         required: true,
     },
     price_history: {
